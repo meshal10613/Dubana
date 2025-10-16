@@ -16,7 +16,7 @@ const Navbar = () => {
         { name: "About Us", path: "/about" },
     ];
     return (
-        <div className="navbar bg-white px-6 2xl:px-[7%]">
+        <div className="navbar bg-white px-6 2xl:px-[7%] sticky top-0">
             {/* Drawer for Mobile */}
             <div className="drawer">
                 <input id="nav-drawer" type="checkbox" className="drawer-toggle" />
