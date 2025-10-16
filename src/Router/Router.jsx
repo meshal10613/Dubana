@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout";
 import BeAMember from "../Pages/BeAMember";
+import Home from "../Pages/Home";
 
 export const router = createBrowserRouter([
     {
@@ -9,6 +10,10 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                element: <Home/>
+            },
+            {
+                path: "/beAMember",
                 element: <BeAMember/>
             }
         ]

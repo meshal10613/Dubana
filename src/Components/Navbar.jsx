@@ -7,7 +7,7 @@ const Navbar = () => {
         { name: "Home", path: "/" },
         { name: "Reunion", path: "/reunion" },
         { name: "Members", path: "/members" },
-        { name: "Be a Member", path: "/be-a-member" },
+        { name: "Be a Member", path: "/beAMember" },
         { name: "Executives", path: "/executives" },
         { name: "Dubana Talk", path: "/dubana-talk" },
         { name: "Articles", path: "/articles" },
