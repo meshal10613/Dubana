@@ -71,7 +71,7 @@ const Navbar = () => {
 
                 {/* Login Button */}
                 <div className="flex-none">
-                    <NavLink to="/login" className="btn btn-primary rounded-lg">
+                    <NavLink to="/login" className="btn btn-primary transition-all hover:btn-secondary rounded-lg">
                     Login
                     </NavLink>
                 </div>
@@ -96,7 +96,7 @@ const Navbar = () => {
                         ))}
                     </ul>
                     <li className="mt-4">
-                    <NavLink to="/login" className="btn btn-primary w-full">
+                    <NavLink to="/login" className="btn btn-primary transition-all hover:btn-secondary w-full">
                         Login
                     </NavLink>
                     </li>

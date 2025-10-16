@@ -6,6 +6,6 @@
 @plugin "daisyui/theme" {
     name: "garden";
     default: true;
-    --color-primary: #FF4D00;
-    --color-secondary: #F5F5F5;
+    --color-primary: #042175;
+    --color-secondary: #991A37;
 }
