@@ -35,10 +35,10 @@ const BeAMember = () => {
             totalFee: selected?.fee + selected?.pFee,
             paymentMethod: selected.paymentMethod
         };
-        console.log(paymentDoc)
+        console.log(paymentDoc);
     };
 
-    console.log(selected)
+    console.log(selected);
 
     return (
         <div className='my-10 container md:mx-auto'>
