@@ -9,6 +9,7 @@ import cash from '../assets/dollar.png';
 import wire from '../assets/bankA.png';
 import { addToLocalLocalStorage } from '../Hooks/LocalHost';
 import { toast } from 'react-toastify';
+import qr from '../assets/qr.jpg';
 
 const BeAMember = () => {
     const [selectedMembership, setSelectedMembership] = useState("");
@@ -52,7 +53,6 @@ const BeAMember = () => {
         addToLocalLocalStorage(paymentDoc);
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -72,15 +72,15 @@ const BeAMember = () => {
                 image: reader.result,
                 notes: notes
             };
-            console.log(data , typeof data.image)
 
             // Call your hook
-            // addToLocalLocalStorage(data);
+            addToLocalLocalStorage(data);
         };
         reader.readAsDataURL(file);
 
         console.log(selected)
     };
+
     return (
         <div className='my-10 container md:mx-auto'>
             <div className='bg-white px-10 py-5 rounded-xl'>
@@ -269,7 +269,9 @@ const BeAMember = () => {
                         <button
                             onClick={() => {
                                 setSelectedPayment("zelle"),
-                                setDisable(true);
+                                setDisable(true),
+                                setSelected(prev => ({ ...prev, pFee: 0, paymentMethod: "Zelle" })),
+                                document.getElementById('my_modal_4').showModal()
                             }}
                             className={`w-full flex items-center justify-between border rounded-lg p-4 cursor-pointer transition 
                             ${
@@ -319,7 +321,9 @@ const BeAMember = () => {
                         <button
                             onClick={() => {
                                 setSelectedPayment("venmo"),
-                                setDisable(true)
+                                setDisable(true),
+                                setSelected(prev => ({ ...prev, pFee: 0, paymentMethod: "Venmo" })),
+                                document.getElementById('my_modal_4').showModal()
                             }}
                             className={`w-full flex items-center justify-between border rounded-lg p-4 cursor-pointer transition 
                             ${
@@ -345,8 +349,8 @@ const BeAMember = () => {
                                 : "border-gray-300"
                             }`}
                         >
-                            <span className='text-lg'>Venmo (Scan to Pay)</span>
-                            <img src={paypal} alt="Venmo (Scan to Pay)" className="h-5 lg:h-8" />
+                            <span className='text-lg'>Paypal | Credit/Debit Card Checkout</span>
+                            <img src={paypal} alt="Paypal | Credit/Debit Card Checkout" className="h-5 lg:h-8" />
                         </button>
                         {/* cash */}
                         <button
@@ -369,7 +373,9 @@ const BeAMember = () => {
                         <button
                             onClick={() => {
                                 setSelectedPayment("wire"),
-                                setDisable(true);
+                                setDisable(true),
+                                setSelected(prev => ({ ...prev, pFee: 0, paymentMethod: "Wire Transfer" })),
+                                document.getElementById('my_modal_4').showModal()
                             }}
                             className={`w-full flex items-center justify-between border rounded-lg p-4 cursor-pointer transition 
                             ${
@@ -428,23 +434,25 @@ const BeAMember = () => {
                 disabled={disable}>Pay Now</button>
             </div>
 
-            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button>
+            {/* Modal */}
             <dialog id="my_modal_4" className="modal">
                 <div className="modal-box h-11/12 max-h-5xl space-y-3 bg-base-100 p-0">
-                    <div className='sticky top-0 px-6 pt-6'>
+                    <div className='sticky top-0 px-6 pt-6 bg-white'>
                         <div className='flex items-center justify-between'>
-                            <h2 className='text-xl font-bold'>{selected.paymentMethod}asdf</h2>
+                            <h2 className='text-xl font-bold'>{selected.paymentMethod}</h2>
                                 <form method="dialog">
                                     {/* if there is a button, it will close the modal */}
                                     <button className="btn btn-sm btn-circle btn-ghost ">✕</button>
                                 </form>
                         </div>
-                        <div className="divider m-0"></div>
+                        {/* <div className="divider m-0"></div> */}
                     </div>
                     <div className='px-6 pb-6'>
                         <h2>Complete your payment with: <span className='font-bold'>{selected.paymentMethod}</span></h2>
                         <p className='text-xl font-bold'>Scan with your mobile device</p>
+                        <div className='my-3'>
+                            <img src={qr} alt="QR Code" className='w-3/5 mx-auto rounded-lg' />
+                        </div>
                         <div className='border border-[#CD8B9E] bg-[#FFF0F1] rounded-md p-2'>
                             <h2 className='text-[#DC587A] font-semibold'>How to complete payment:</h2>
                             <p>1. Scan the QR code above with your payment app</p>

@@ -11,7 +11,7 @@ const getFromLocalStorage = () => {
 
 const addToLocalLocalStorage = (data) => {
     const members = getFromLocalStorage();
-    const isExist = members.find(b => b.type === data.type);
+    const isExist = members.find(b => b.type === data.type && b.paymentMethod === data.paymentMethod);
     if(isExist){
         toast.error("Already done payment");
         return false;
