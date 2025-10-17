@@ -1,2 +1,2 @@
 # Dubana
-[Live Link]()
+[Live Link](https://dubana.netlify.app/)
